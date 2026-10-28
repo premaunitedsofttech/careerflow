@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CareerFlow — Job Application Tracker</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app" id="app">
+
+  <!-- Mobile nav overlay -->
+  <div class="nav-overlay" id="navOverlay"></div>
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <span class="brand-mark" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 12L10 18L20 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <span class="brand-name">CareerFlow</span>
+      <button class="sidebar-collapse-btn" id="collapseBtn" title="Collapse sidebar" aria-label="Collapse sidebar">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M15 6L9 12L15 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+
+    <nav class="sidebar-nav" aria-label="Main navigation">
+      <a href="#" class="nav-item" data-page="dashboard">
+        <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="9" rx="1.5" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="3" width="7" height="5" rx="1.5" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="12" width="7" height="9" rx="1.5" stroke="currentColor" stroke-width="1.8"/><rect x="3" y="16" width="7" height="5" rx="1.5" stroke="currentColor" stroke-width="1.8"/></svg>
+        <span>Dashboard</span>
+      </a>
+      <a href="#" class="nav-item" data-page="applications">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M9 3h6l1 2h3a1 1 0 011 1v13a2 2 0 01-2 2H6a2 2 0 01-2-2V6a1 1 0 011-1h3l1-2z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 11h6M9 15h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <span>All Applications</span>
+      </a>
+      <a href="#" class="nav-item" data-page="interviews">
+        <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="17" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M3 9h18M8 2v4M16 2v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="8" cy="14" r="1.3" fill="currentColor"/><circle cx="12" cy="14" r="1.3" fill="currentColor"/><circle cx="16" cy="14" r="1.3" fill="currentColor"/></svg>
+        <span>Interview Tracker</span>
+      </a>
+      <a href="#" class="nav-item" data-page="followups">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Follow-ups</span>
+      </a>
+      <a href="#" class="nav-item" data-page="analytics">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M4 20V10M11 20V4M18 20v-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <span>Analytics</span>
+      </a>
+      <a href="#" class="nav-item" data-page="settings">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 11-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06A1.65 1.65 0 005 15.33 1.65 1.65 0 003.5 14.5H3a2 2 0 110-4h.09A1.65 1.65 0 004.6 9.5a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06A1.65 1.65 0 009.5 5.2a1.65 1.65 0 001.5-1V3a2 2 0 114 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06A1.65 1.65 0 0019.4 9.5a1.65 1.65 0 001.5 1H21a2 2 0 110 4h-.09a1.65 1.65 0 00-1.51 1z" stroke="currentColor" stroke-width="1.6"/></svg>
+        <span>Settings</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-user">
+      <div class="user-avatar" id="sidebarAvatar">JS</div>
+      <div class="user-meta">
+        <div class="user-name" id="sidebarUserName">Job Seeker</div>
+        <div class="user-sub">Free plan</div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <div class="main">
+    <header class="topbar">
+      <button class="icon-btn mobile-menu-btn" id="mobileMenuBtn" aria-label="Open navigation">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <div class="topbar-title">
+        <h1 id="pageTitle">Dashboard</h1>
+        <p id="pageSubtitle">Your job search at a glance</p>
+      </div>
+
+      <div class="topbar-search">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/><path d="M21 21l-4.3-4.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <input type="search" id="globalSearch" placeholder="Search company or job title…" aria-label="Search applications">
+      </div>
+
+      <div class="topbar-actions">
+        <div class="popover-wrap">
+          <button class="icon-btn" id="notifBtn" aria-haspopup="true" aria-expanded="false" aria-label="Notifications">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M13.7 21a2 2 0 01-3.4 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            <span class="notif-dot" id="notifDot" hidden></span>
+          </button>
+          <div class="popover" id="notifPopover" hidden>
+            <div class="popover-header">Notifications</div>
+            <div class="popover-body" id="notifList"></div>
+          </div>
+        </div>
+        <button class="user-avatar small" id="topAvatar" title="Settings"></button>
+        <button class="btn btn-primary" id="addAppBtn">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+          <span>Add Application</span>
+        </button>
+      </div>
+    </header>
+
+    <main class="content" id="content"></main>
+  </div>
+</div>
+
+<!-- Modal for Add/Edit Application -->
+<div class="modal-backdrop" id="modalBackdrop" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-header">
+      <h2 id="modalTitle">Add Application</h2>
+      <button class="icon-btn" id="modalCloseBtn" aria-label="Close dialog">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <form id="appForm" class="modal-body" novalidate>
+      <input type="hidden" id="fId">
+
+      <div class="form-grid">
+        <div class="field">
+          <label for="fCompany">Company name <span class="req">*</span></label>
+          <input id="fCompany" type="text" required maxlength="100">
+          <div class="field-error" id="err-fCompany"></div>
+        </div>
+        <div class="field">
+          <label for="fTitle">Job title <span class="req">*</span></label>
+          <input id="fTitle" type="text" required maxlength="100">
+          <div class="field-error" id="err-fTitle"></div>
+        </div>
+
+        <div class="field">
+          <label for="fUrl">Job posting / company URL</label>
+          <input id="fUrl" type="text" placeholder="https://example.com/job">
+          <div class="field-error" id="err-fUrl"></div>
+        </div>
+        <div class="field">
+          <label for="fLocation">Location</label>
+          <input id="fLocation" type="text" maxlength="100">
+        </div>
+
+        <div class="field">
+          <label for="fMode">Work mode</label>
+          <select id="fMode">
+            <option value="Remote">Remote</option>
+            <option value="Hybrid">Hybrid</option>
+            <option value="On-site">On-site</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="fType">Employment type</label>
+          <select id="fType">
+            <option value="Full-time">Full-time</option>
+            <option value="Part-time">Part-time</option>
+            <option value="Contract">Contract</option>
+            <option value="Internship">Internship</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="fSalary">Salary range (optional)</label>
+          <input id="fSalary" type="text" placeholder="e.g. $80k–$100k" maxlength="60">
+        </div>
+        <div class="field">
+          <label for="fDate">Application date <span class="req">*</span></label>
+          <input id="fDate" type="date" required>
+          <div class="field-error" id="err-fDate"></div>
+        </div>
+
+        <div class="field">
+          <label for="fStatus">Status</label>
+          <select id="fStatus">
+            <option value="Wishlist">Wishlist</option>
+            <option value="Applied">Applied</option>
+            <option value="Interview">Interview</option>
+            <option value="Offer">Offer</option>
+            <option value="Rejected">Rejected</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="fRecruiter">Recruiter name</label>
+          <input id="fRecruiter" type="text" maxlength="100">
+        </div>
+
+        <div class="field">
+          <label for="fRecruiterContact">Recruiter contact</label>
+          <input id="fRecruiterContact" type="text" maxlength="100" placeholder="email or phone">
+        </div>
+        <div class="field"></div>
+
+        <div class="field">
+          <label for="fInterviewDate">Interview date</label>
+          <input id="fInterviewDate" type="date">
+        </div>
+        <div class="field">
+          <label for="fInterviewTime">Interview time</label>
+          <input id="fInterviewTime" type="time">
+        </div>
+
+        <div class="field">
+          <label for="fFollowupDate">Follow-up date</label>
+          <input id="fFollowupDate" type="date">
+        </div>
+        <div class="field"></div>
+
+        <div class="field field-full">
+          <label for="fNotes">Notes</label>
+          <textarea id="fNotes" rows="3" maxlength="1000"></textarea>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-ghost" id="cancelBtn">Cancel</button>
+        <button type="submit" class="btn btn-primary">Save Application</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Details slide-over -->
+<div class="modal-backdrop" id="detailsBackdrop" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="detailsTitle">
+    <div class="modal-header">
+      <h2 id="detailsTitle">Application Details</h2>
+      <button class="icon-btn" id="detailsCloseBtn" aria-label="Close dialog">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="modal-body" id="detailsBody"></div>
+    <div class="modal-footer" id="detailsFooter"></div>
+  </div>
+</div>
+
+<!-- Confirm dialog -->
+<div class="modal-backdrop" id="confirmBackdrop" hidden>
+  <div class="modal modal-sm" role="alertdialog" aria-modal="true" aria-labelledby="confirmTitle">
+    <div class="modal-header">
+      <h2 id="confirmTitle">Are you sure?</h2>
+    </div>
+    <div class="modal-body"><p id="confirmMessage">This action cannot be undone.</p></div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-ghost" id="confirmCancelBtn">Cancel</button>
+      <button type="button" class="btn btn-danger" id="confirmOkBtn">Confirm</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toasts -->
+<div class="toast-stack" id="toastStack" aria-live="polite"></div>
+
+<script src="script.js"></script>
+</body>
+</html>

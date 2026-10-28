@@ -2,7 +2,7 @@
 
 CareerFlow is a personal job application tracking platform built as a single-page web app. It helps you record job applications, monitor their status, track interviews, schedule follow-ups, and understand your progress through an interactive dashboard — all stored locally in your browser.
 
-## Project Overview
+## Project Overview Content
 
 CareerFlow is a portfolio-ready, fully functional job search tracker. There is no server, no account, and no external API — all your data lives in your browser's LocalStorage. It's built to be a strong foundation for learning front-end development and, later, version control with Git/GitHub.
 

@@ -104,3 +104,8 @@ Automatically calculated from your stored applications — no manual input neede
 - [ ] Resize the browser to tablet and mobile widths; verify sidebar collapses into a drawer and layouts remain usable.
 - [ ] Switch between light and dark themes.
 - [ ] Open the browser console and confirm there are no errors during normal use.
+
+
+## Dashboard Improvements
+
+Working on the CareerFlow dashboard feature.
